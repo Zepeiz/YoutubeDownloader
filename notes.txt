@@ -1,0 +1,9 @@
+
+https://stackoverflow.com/questions/58456229/i-am-trying-to-download-video-using-pytube-however-for-some-reason-no-sound-is-d
+https://gist.github.com/sidneys/7095afe4da4ae58694d128b1034e01e2
+https://github.com/kkroening/ffmpeg-python
+https://pytube.io/en/latest/api.html
+https://gist.github.com/yogeshsinghgit/14241e51d3d4d67571ef999647fb7c67
+
+pip3 install pytube
+pip3 install ffmpeg-python
