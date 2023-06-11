@@ -1,5 +1,10 @@
 # YoutubeDownloader
 Simple python command line tool to batch download youtube videos in mp3/mp4 format using pytube.
+Currently supports downloading:
+* mp3.
+* mp4 up to 720p with audio.
+* mp4 up to 1080pp without audio.
+* Downloading multiple mp3 at a time.
 
 ## Setup
 1. Have python installed 
