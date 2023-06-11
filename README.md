@@ -16,3 +16,11 @@ Currently supports downloading:
 1. Create a source.txt file in the src directory
 2. Paste the youtube links one per line
 3. Run Main.py and choose batch converter mode
+
+## Disclaimers
+This project is made using [Pytube](https://github.com/pytube/pytube), as of writing this on 11/jun/2023, the function
+to extract the video description is no longer working apparently due to Youtube's API changes, so all video descriptions right now
+will show as No description.
+
+This project is made for personal use only, I do not take liability for misconduct with what users do with the files they download
+using this tool.
