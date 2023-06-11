@@ -162,3 +162,4 @@ cython_debug/
 downloads/mp3/*
 downloads/mp4/*
 **/.DS_Store
+src/source.txt
