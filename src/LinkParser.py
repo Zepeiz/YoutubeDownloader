@@ -13,6 +13,4 @@ class LinkParser:
     def parse(self):
         with open(self.filePath, 'r') as file:
             data = file.read().split()
-
-
         return data
