@@ -27,7 +27,7 @@ class Main:
             try:
                 yt = YouTube(links[i])
                 yt.check_availability()
-                print("Current progress: " + str(i) + "/" + str(length))
+                print("Current progress: " + str(i+1) + "/" + str(length))
                 print("Downloading: " + yt.title + "\n")
                 self.mp3_converter.batchDownload(yt, destination)
             except Exception:
