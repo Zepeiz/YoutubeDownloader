@@ -17,15 +17,12 @@ class mp3Converter:
         # download the file
         out_file = file.download(output_path=destination)
 
-        # save the file
-
-        base, ext = os.path.splitext(out_file)
-        new_file = base + '.mp3'
-        os.rename(out_file, new_file)
+        # rename the file
+        self.addAuthorToFilename(yt, out_file)
 
         # result of success
         self.outputMessage(yt, file)
-    
+
     def batchDownload(self, yt, destination):
 #TODO: Add exception handling
 
@@ -35,16 +32,13 @@ class mp3Converter:
         # download the file
         out_file = file.download(output_path=destination)
 
-        # save the file
-
-        base, ext = os.path.splitext(out_file)
-        new_file = base + '.mp3'
-        os.rename(out_file, new_file)
+        # rename the file
+        self.addAuthorToFilename(yt, out_file)
 
         # result of success
         self.outputMessage(yt, file)
-        
-    
+
+
     def outputMessage(self, yt, file):
         duration = yt.length
         description = yt.description
@@ -75,5 +69,18 @@ class mp3Converter:
         #relative path
         destination = str(input(">> ")) or "downloads/mp3"
         return destination
+
+    def addAuthorToFilename(self, yt, out_file):
+        directory_path = os.path.dirname(out_file)
+        file_name = os.path.basename(out_file)
+        name, extension = os.path.splitext(file_name)
+        new_file_name = yt.author + ' - ' + name + '.mp3'
+        new_file = os.path.join(directory_path, new_file_name)
+        os.rename(out_file, new_file)
+
+    def defaultFileName(self, out_file):
+        name, extension = os.path.splitext(out_file)
+        new_file = name + '.mp3'
+        os.rename(out_file, new_file)
 
 

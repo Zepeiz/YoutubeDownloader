@@ -10,7 +10,7 @@ class Main:
     mp3_converter = mp3Converter()
     mp4_converter = mp4Converter()
     exit = False
-    
+
 
 #Only for mp3
     def batchConverter(self):
@@ -34,7 +34,7 @@ class Main:
                 print("Video unavailable.")
                 continue
         print("Batch download complete!\n")
-        
+
 
     def customConverter(self):
         # url input from user
@@ -47,9 +47,9 @@ class Main:
             self.mp3_converter.download(yt)
         elif format == "video":
             self.mp4_converter.download(yt)
-        else: return "Unsupported operation"
-        
-        
+        else: print("Unsupported operation")
+
+
 
 
     def run(self):
@@ -72,7 +72,7 @@ class Main:
             self.exit = True
         else:
             pass
-                
+
 
 
 
