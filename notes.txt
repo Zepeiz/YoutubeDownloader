@@ -7,3 +7,7 @@ https://gist.github.com/yogeshsinghgit/14241e51d3d4d67571ef999647fb7c67
 
 pip3 install pytube
 pip3 install ffmpeg-python
+
+https://ffmpeg.org/download.html (Windows)
+brew install ffmpeg (mac)
+pip install pydub

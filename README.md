@@ -7,7 +7,7 @@ Currently supports downloading:
 * Downloading multiple mp3 at a time.
 
 ## Setup
-1. Have python installed 
+1. Have python installed
 2. pip install pytube, or if you are running python3, do: pip3 install pytube
 3. Download the source code
 4. Run Main.py

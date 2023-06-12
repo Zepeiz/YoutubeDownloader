@@ -2,6 +2,7 @@
 import math
 from pytube import YouTube
 import os
+from pydub import AudioSegment
 
 class mp3Converter:
 
@@ -18,7 +19,7 @@ class mp3Converter:
         out_file = file.download(output_path=destination)
 
         # rename the file
-        self.addAuthorToFilename(yt, out_file)
+        self.extractMP3(yt, out_file)
 
         # result of success
         self.outputMessage(yt, file)
@@ -33,7 +34,7 @@ class mp3Converter:
         out_file = file.download(output_path=destination)
 
         # rename the file
-        self.addAuthorToFilename(yt, out_file)
+        self.extractMP3(yt, out_file)
 
         # result of success
         self.outputMessage(yt, file)
@@ -70,13 +71,23 @@ class mp3Converter:
         destination = str(input(">> ")) or "downloads/mp3"
         return destination
 
-    def addAuthorToFilename(self, yt, out_file):
+    #out_file is downloaded as VCodec : mp4a.40.2, then the mp3 needs to be extracted using pydub.
+    def extractMP3(self, yt, out_file):
+        file_path = os.path.abspath(out_file)
+        audio = AudioSegment.from_file(file_path, format='mp4')
+
+        #Changing the file name
         directory_path = os.path.dirname(out_file)
         file_name = os.path.basename(out_file)
         name, extension = os.path.splitext(file_name)
         new_file_name = yt.author + ' - ' + name + '.mp3'
         new_file = os.path.join(directory_path, new_file_name)
-        os.rename(out_file, new_file)
+
+        #Exporting the mp3 into the new file path
+        audio.export(new_file, format='mp3')
+
+        #Deletes the now useless mp4 source file
+        os.remove(file_path)
 
     def defaultFileName(self, out_file):
         name, extension = os.path.splitext(out_file)
