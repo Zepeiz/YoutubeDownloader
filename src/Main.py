@@ -8,11 +8,11 @@ class Main:
     filePath = 'src/source.txt'
     videoURL = None
     mp3_converter = mp3Converter()
-    mp4_converter = mp4Converter()
+    #mp4_converter = mp4Converter()
     exit = False
 
 
-#Only for mp3
+    #Only for mp3
     def batchConverter(self):
         parser = LinkParser(self.filePath)
         #array of links
@@ -45,8 +45,8 @@ class Main:
 
         if format == "audio":
             self.mp3_converter.download(yt)
-        elif format == "video":
-            self.mp4_converter.download(yt)
+        #elif format == "video":
+            #self.mp4_converter.download(yt)
         else: print("Unsupported operation")
 
 
@@ -72,10 +72,6 @@ class Main:
             self.exit = True
         else:
             pass
-
-
-
-
 
 if __name__== "__main__":
     main = Main()

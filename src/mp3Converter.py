@@ -1,13 +1,13 @@
 # importing packages
 import math
 from pytube import YouTube
+from pytube import Stream
 import os
 from pydub import AudioSegment
 
 class mp3Converter:
 
-
-    def download(self, yt):
+    def download(self, yt: YouTube):
 #TODO: Add exception handling
 
         streams = yt.streams.filter(only_audio=True)
@@ -16,16 +16,18 @@ class mp3Converter:
         destination = self.destinationPicker()
 
         # download the file
-        out_file = file.download(output_path=destination)
-
-        # rename the file
-        self.extractMP3(yt, out_file)
+        if file is not None:
+            out_file = file.download(output_path=destination)
+            # rename the file
+            self.extractMP3(yt, out_file)
+        else:
+            print('There was an error downloading the file.')
 
         # result of success
         self.outputMessage(yt, file)
 
     def batchDownload(self, yt, destination):
-#TODO: Add exception handling
+    #TODO: Add exception handling
 
         streams = yt.streams.filter(only_audio=True)
         #itag 140 for 128kbps mp3 format
@@ -57,18 +59,18 @@ class mp3Converter:
         print("author: " + author)
         print("duration: " + str(math.floor(duration/60)) + ":" + str(duration%60) + "\n")
 
-    def itagPicker(self, streams):
+    def itagPicker(self, streams) -> int:
         for stream in streams:
             print(f"Itag : {stream.itag}, Quality : {stream.abr}, VCodec : {stream.codecs[0]}")
 
         # itag number 140 for mp3 128kbps
-        itag = input("Enter itag Value (Leave blank for 128kbps) : ") or 140
+        itag = int(input("Enter itag Value (Leave blank for 128kbps) : ") or 140) 
         return itag
 
     def destinationPicker(self):
         print("Enter the destination (leave blank for current directory)")
         #relative path
-        destination = str(input(">> ")) or "downloads/mp3"
+        destination = str(input(">> ") or "downloads/mp3")
         return destination
 
     #out_file is downloaded as VCodec : mp4a.40.2, then the mp3 needs to be extracted using pydub.

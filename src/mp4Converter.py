@@ -1,16 +1,17 @@
 import math
 from pytube import YouTube
+from ConverterInterface import ConverterInterface
 
-class mp4Converter:
+class mp4Converter(ConverterInterface):
 
 
     def download(self, yt):
         print("Enter the destination (leave blank for current directory)")
         destination = str(input(">> ")) or "downloads/mp4"
 
-#TODO: currently 1080 is not possible due to progressive format, needs to combine 1080p video only file with sound.
-        print("Enter the resolution you want (leave blank for highest):\n Eg: 1080p, 720p, 480p, 360p, 240p, 144p")
-        res = str(input(">>")) or 'highest'
+        #TODO: currently 1080 is not possible due to progressive format, needs to combine 1080p video only file with sound.
+        # print("Enter the resolution you want (leave blank for highest):\n Eg: 1080p, 720p, 480p, 360p, 240p, 144p")
+        #res = str(input(">>")) or 'highest'
 
         #progressive category to get streams with both audio and video, but is limited to 720p or lower
         my_streams = yt.streams.filter(progressive=True)
@@ -26,6 +27,9 @@ class mp4Converter:
         video.download(output_path=destination)
         
         self.outputMessage(yt, video)
+
+    def batchDownload(self):
+        return super().batchDownload()
 
        
 
