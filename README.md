@@ -8,7 +8,7 @@ Currently supports downloading:
 
 ## Setup
 1. Have python installed
-2. `pip install pytube`, or if you are running python3, do: pip3 install pytube
+2. Install dependencies: `pip install -r requirements.txt`, or python3 if you are on Mac.
 3. Install ffmpeg
 	1. (Mac) `brew install ffmpeg`
 	2. (Windows) https://ffmpeg.org/download.html. Then add the FFmpeg bin folder to your system's PATH variable:
@@ -19,7 +19,6 @@ Currently supports downloading:
 		* Click on "New" and add the full path to the bin folder of the extracted FFmpeg archive (e.g., C:\path\to\ffmpeg\bin).
 		* Click "OK" to save the changes.
 	3. (Linux) `sudo apt-get install ffmpeg`
-4. `pip install pydub`
 5. Download the latest release zip file
 6. Run `Main.py`, for downloading multiple at a time, look below.
 
