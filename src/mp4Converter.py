@@ -40,7 +40,7 @@ class mp4Converter:
                 print(
                     f"Video itag : {stream.itag} Resolution : {stream.resolution} VCodec : {stream.codecs[0]}"
                 )
-            itag = input("Enter itag Value : ")
+            itag = input("Enter itag Value (leave blank for 1080p) : ") or 137
             video = yt.streams.get_by_itag(itag)
 
             audio = yt.streams.get_by_itag(140)  # 140 = 128kbps audio
@@ -74,14 +74,14 @@ class mp4Converter:
         self.outputMessage(yt, video)
 
     def outputMessage(self, yt, video):
-        res = yt.resolution if yt.resolution else "Resolution unavailable"
+        # res = yt.resolution if yt.resolution else "Resolution unavailable"
         duration = yt.length if yt.length else 0
         description = yt.description if yt.description else "No description"
         author = yt.author if yt.author else "Author unavailable"
         thumbnail = yt.thumbnail_url if yt.thumbnail else "Thumbnail unavailable"
 
         print(yt.title + " has been successfully downloaded.")
-        print("resolution:" + res)
+        # print("resolution:" + res)
         print("thumbnail image: " + thumbnail)
         print("description: " + description)
         print("author: " + author)

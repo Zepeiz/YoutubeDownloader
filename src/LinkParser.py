@@ -14,3 +14,11 @@ class LinkParser:
         with open(self.filePath, 'r') as file:
             data = file.read().split()
         return data
+
+    def removeLine(self, line):
+        with open(self.filePath, "r") as file:
+            lines = file.readlines()
+        with open(self.filePath, "w") as file:
+            for l in lines:
+                if l.strip("\n") != line:
+                    file.write(l)
